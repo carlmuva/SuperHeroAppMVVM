@@ -10,10 +10,13 @@ import com.example.appsuperheromvvm.R
 
 class SuperHeroDetailFragment : Fragment() {
 
+    companion object {
+        const val EXTRA_ID = "extra_id"
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(

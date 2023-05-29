@@ -1,7 +1,6 @@
 package com.example.appsuperheromvvm.domain
 
 import com.example.appsuperheromvvm.data.model.SuperHero
-import com.example.appsuperheromvvm.data.model.SuperHeroDetail
 import com.example.appsuperheromvvm.data.remote.SuperHeroDataSource
 
 class SuperHeroRepositoryImpl(private val dataSource: SuperHeroDataSource):SuperHeroRepository {
@@ -10,8 +9,6 @@ class SuperHeroRepositoryImpl(private val dataSource: SuperHeroDataSource):Super
         return dataSource.getSuperHero(superHeroName)
     }
 
-    override suspend fun getSuperHeroDetail(superHeroId:String): SuperHeroDetail {
-        return dataSource.getSuperHeroDetail(superHeroId)
-    }
+
 
 }

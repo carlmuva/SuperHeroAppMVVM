@@ -1,7 +1,6 @@
 package com.example.appsuperheromvvm.data.remote
 
 import com.example.appsuperheromvvm.data.model.SuperHero
-import com.example.appsuperheromvvm.data.model.SuperHeroDetail
 import com.example.appsuperheromvvm.domain.WebService
 
 class SuperHeroDataSource(val webService: WebService) {
@@ -10,8 +9,6 @@ class SuperHeroDataSource(val webService: WebService) {
         return webService.getSuperHero(superHeroName)
     }
 
-    suspend fun getSuperHeroDetail(superHeroId:String):SuperHeroDetail{
-        return webService.getSuperHeroDetail(superHeroId)
-    }
+
 
 }

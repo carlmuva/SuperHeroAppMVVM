@@ -2,7 +2,7 @@ package com.example.appsuperheromvvm.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class SuperHeroDetail(
+/*data class SuperHeroDetail(
     @SerializedName("name") val name: String = "",
     @SerializedName("powerstats") val powerstats: PowerstatsDetailResponse,
     @SerializedName("biography") val biography: BiographyDetailResponse,
@@ -24,6 +24,6 @@ data class PowerstatsDetailResponse(
     @SerializedName("durability") val durability: String = "",
     @SerializedName("power") val power: String = "",
     @SerializedName("combat") val combat: String = ""
-)
+)*/
 
 
