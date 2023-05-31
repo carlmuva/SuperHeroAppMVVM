@@ -16,9 +16,23 @@ import com.example.appsuperheromvvm.databinding.HeroItemBinding
 class SuperHeroAdapter(private val context: Context, private val superHeroList: List<ResultsItemsResponse>,private val itemClickListener: OnSuperHeroClickListener):RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     interface OnSuperHeroClickListener{
-        fun onSuperHeroClick(superHero: SuperHero)
+        fun onSuperHeroClick(superHero: ResultsItemsResponse)
     }
 
+    inner class MainViewHolder(itemView: View): BaseViewHolder<ResultsItemsResponse>(itemView){
+        val mBinding = HeroItemBinding.bind(itemView)
+
+        override fun bind(item: ResultsItemsResponse, position: Int) {
+            Glide.with(mBinding.ivSuperhero.context)
+                .load(item.image.url)
+                .centerCrop()
+                .into(mBinding.ivSuperhero)
+            mBinding.tvSuperheroName.text=item.name
+            mBinding.content.setOnClickListener { itemClickListener.onSuperHeroClick(item) }
+        }
+
+
+    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -40,21 +54,6 @@ class SuperHeroAdapter(private val context: Context, private val superHeroList: 
     }
 
     override fun getItemCount(): Int = superHeroList.size
-
-
-    inner class MainViewHolder(itemView: View): BaseViewHolder<ResultsItemsResponse>(itemView){
-        val mBinding = HeroItemBinding.bind(itemView)
-
-        override fun bind(item: ResultsItemsResponse, position: Int) {
-            Glide.with(mBinding.ivSuperhero.context)
-                .load(item.image.url)
-                .centerCrop()
-                .into(mBinding.ivSuperhero)
-            mBinding.tvSuperheroName.text=item.name
-        }
-
-
-    }
 
 
 
