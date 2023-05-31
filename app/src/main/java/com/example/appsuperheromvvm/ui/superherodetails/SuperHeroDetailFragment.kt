@@ -14,17 +14,12 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.appsuperheromvvm.data.model.PowerstatsDetailResponse
 import com.example.appsuperheromvvm.data.model.ResultsItemsResponse
-import com.example.appsuperheromvvm.data.model.SuperHero
 import com.example.appsuperheromvvm.data.remote.SuperHeroDataSource
 import com.example.appsuperheromvvm.databinding.FragmentSuperHeroDetailBinding
-import com.example.appsuperheromvvm.databinding.HeroItemBinding
 import com.example.appsuperheromvvm.domain.RetrofitClient
 import com.example.appsuperheromvvm.domain.SuperHeroRepositoryImpl
 import com.example.appsuperheromvvm.presentation.SuperHeroViewModel
 import com.example.appsuperheromvvm.presentation.SuperheroViewModelFactory
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 
