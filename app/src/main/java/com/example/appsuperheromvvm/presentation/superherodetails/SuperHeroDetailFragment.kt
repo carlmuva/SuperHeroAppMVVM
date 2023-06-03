@@ -1,7 +1,6 @@
-package com.example.appsuperheromvvm.ui.superherodetails
+package com.example.appsuperheromvvm.presentation.superherodetails
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue

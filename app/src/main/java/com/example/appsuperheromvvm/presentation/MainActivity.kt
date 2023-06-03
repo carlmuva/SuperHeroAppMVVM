@@ -1,4 +1,4 @@
-package com.example.appsuperheromvvm.ui
+package com.example.appsuperheromvvm.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/superHeroFragment"
-        android:name="com.example.appsuperheromvvm.ui.superhero.SuperHeroFragment"
+        android:name="com.example.appsuperheromvvm.presentation.superhero.SuperHeroFragment"
         android:label="fragment_super_hero"
         tools:layout="@layout/fragment_super_hero" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/superHeroDetailFragment"
-        android:name="com.example.appsuperheromvvm.ui.superherodetails.SuperHeroDetailFragment"
+        android:name="com.example.appsuperheromvvm.presentation.superherodetails.SuperHeroDetailFragment"
         android:label="fragment_super_hero_detail"
         tools:layout="@layout/fragment_super_hero_detail" />
 </navigation>
