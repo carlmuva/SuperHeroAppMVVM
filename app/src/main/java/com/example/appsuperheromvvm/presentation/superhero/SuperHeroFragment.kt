@@ -1,22 +1,22 @@
 package com.example.appsuperheromvvm.presentation.superhero
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.appsuperheromvvm.R
-import com.example.appsuperheromvvm.core.Resource
 import com.example.appsuperheromvvm.data.model.ResultsItemsResponse
 import com.example.appsuperheromvvm.databinding.FragmentSuperHeroBinding
 import com.example.appsuperheromvvm.presentation.SuperHeroViewModel
 import com.example.appsuperheromvvm.presentation.superhero.adapters.SuperHeroAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -24,17 +24,12 @@ class SuperHeroFragment : Fragment(), SuperHeroAdapter.OnSuperHeroClickListener 
 
     private lateinit var mBinding: FragmentSuperHeroBinding
 
-    private val viewModel by activityViewModels<SuperHeroViewModel>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private val viewModel : SuperHeroViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         mBinding = FragmentSuperHeroBinding.inflate(inflater,container,false)
         return mBinding.root
@@ -52,30 +47,18 @@ class SuperHeroFragment : Fragment(), SuperHeroAdapter.OnSuperHeroClickListener 
     }
 
     private fun setupObservers(){
-        viewModel.fetchMainScreenSuperHeros.observe(viewLifecycleOwner, Observer { result ->
-            when(result){
-                is Resource.Loading ->{
-                    mBinding.progressBar.visibility = View.VISIBLE
-
-                }
-                is Resource.Success->{
-                    mBinding.progressBar.visibility = View.GONE
-                    mBinding.rvHeros.adapter = SuperHeroAdapter(requireContext(),result.data.results,this)
-                    Log.d("LiveData","SuperHero: ${result.data.results}")
-                    // Log.d("LiveData", "Upcoming: ${result.data.first} ")
-                }
-                is Resource.Failure->{
-                    mBinding.progressBar.visibility = View.GONE
-                    Toast.makeText(
-                        requireContext(),
-                        "Ocurrió un error al traer los datos ${result.exception}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                    Log.d("Error","${result.exception}")
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.uiState.collect{
+                    println(it.toString())
+                    mBinding.progressBar.visibility = if (it.isLoading) View.VISIBLE else View.GONE
+                    it.superHero?.let { superHero ->
+                        println(superHero.toString() + "isiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
+                        mBinding.rvHeros.adapter = SuperHeroAdapter(requireContext(), superHero.results,this@SuperHeroFragment)
+                    }
                 }
             }
-        })
+        }
     }
 
     private fun setupSearchView(){

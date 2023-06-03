@@ -5,7 +5,7 @@ import com.example.appsuperheromvvm.domain.WebService
 
 class SuperHeroDataSource(private val webService: WebService) {
 
-    suspend fun getSuperHero(superHeroName:String):SuperHero{
+    suspend fun getSuperHero(superHeroName:String): SuperHero {
         return webService.getSuperHero(superHeroName)
     }
 
