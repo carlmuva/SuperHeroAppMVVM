@@ -24,7 +24,7 @@ import kotlin.math.roundToInt
 class SuperHeroDetailFragment : Fragment() {
 
 
-    private val viewModel by activityViewModels<SuperHeroViewModel>()
+    //private val viewModel by activityViewModels<SuperHeroViewModel>()
 
    // private lateinit var hero:ResultsItemsResponse
     private lateinit var mBinding: FragmentSuperHeroDetailBinding
