@@ -1,4 +1,4 @@
-package com.example.appsuperheromvvm.ui
+package com.example.appsuperheromvvm.presentation
 
 import android.view.View
 import android.widget.AdapterView.OnItemSelectedListener

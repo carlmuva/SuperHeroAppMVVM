@@ -1,16 +1,14 @@
-package com.example.appsuperheromvvm.ui.superhero.adapters
+package com.example.appsuperheromvvm.presentation.superhero.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.appsuperheromvvm.R
 import com.example.appsuperheromvvm.core.BaseViewHolder
 import com.example.appsuperheromvvm.data.model.ResultsItemsResponse
-import com.example.appsuperheromvvm.data.model.SuperHero
 import com.example.appsuperheromvvm.databinding.HeroItemBinding
 
 class SuperHeroAdapter(private val context: Context, private val superHeroList: List<ResultsItemsResponse>,private val itemClickListener: OnSuperHeroClickListener):RecyclerView.Adapter<BaseViewHolder<*>>() {

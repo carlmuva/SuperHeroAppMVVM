@@ -1,4 +1,4 @@
-package com.example.appsuperheromvvm.ui.superhero
+package com.example.appsuperheromvvm.presentation.superhero
 
 import android.os.Bundle
 import android.util.Log
@@ -8,13 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.appsuperheromvvm.R
 import com.example.appsuperheromvvm.core.Resource
 import com.example.appsuperheromvvm.data.model.ResultsItemsResponse
-import com.example.appsuperheromvvm.data.model.SuperHero
 import com.example.appsuperheromvvm.data.remote.SuperHeroDataSource
 import com.example.appsuperheromvvm.databinding.FragmentSuperHeroBinding
 import com.example.appsuperheromvvm.domain.RetrofitClient
@@ -22,10 +20,10 @@ import com.example.appsuperheromvvm.domain.RetrofitClient
 import com.example.appsuperheromvvm.domain.SuperHeroRepositoryImpl
 import com.example.appsuperheromvvm.presentation.SuperHeroViewModel
 import com.example.appsuperheromvvm.presentation.SuperheroViewModelFactory
-import com.example.appsuperheromvvm.ui.superhero.adapters.SuperHeroAdapter
+import com.example.appsuperheromvvm.presentation.superhero.adapters.SuperHeroAdapter
 
 
-class SuperHeroFragment : Fragment(),SuperHeroAdapter.OnSuperHeroClickListener {
+class SuperHeroFragment : Fragment(), SuperHeroAdapter.OnSuperHeroClickListener {
 
     private lateinit var mBinding: FragmentSuperHeroBinding
 
