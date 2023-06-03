@@ -8,21 +8,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface WebService{
+interface WebService {
 
     @GET("10161266202252240/search/{name}")
-    suspend fun getSuperHero(@Path("name")superheroName:String):SuperHero
-
-
-}
-
-object RetrofitClient{
-
-    val webService by lazy {
-        Retrofit.Builder()
-            .baseUrl(AppConstants.BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .build().create(WebService::class.java)
-    }
+    suspend fun getSuperHero(@Path("name") superheroName: String): SuperHero
 
 }

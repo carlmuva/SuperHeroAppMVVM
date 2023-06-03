@@ -4,31 +4,27 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.appsuperheromvvm.data.model.PowerstatsDetailResponse
 import com.example.appsuperheromvvm.data.model.ResultsItemsResponse
-import com.example.appsuperheromvvm.data.remote.SuperHeroDataSource
 import com.example.appsuperheromvvm.databinding.FragmentSuperHeroDetailBinding
-import com.example.appsuperheromvvm.domain.RetrofitClient
-import com.example.appsuperheromvvm.domain.SuperHeroRepositoryImpl
 import com.example.appsuperheromvvm.presentation.SuperHeroViewModel
-import com.example.appsuperheromvvm.presentation.SuperheroViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.roundToInt
 
 
 @Suppress("DEPRECATION")
+@AndroidEntryPoint
 class SuperHeroDetailFragment : Fragment() {
 
 
-    private val viewModel by activityViewModels<SuperHeroViewModel> {
-        SuperheroViewModelFactory(SuperHeroRepositoryImpl(SuperHeroDataSource(RetrofitClient.webService)))
-    }
+    private val viewModel by activityViewModels<SuperHeroViewModel>()
 
    // private lateinit var hero:ResultsItemsResponse
     private lateinit var mBinding: FragmentSuperHeroDetailBinding
